@@ -23,7 +23,8 @@ namespace Hotelsysteem_WFA
 
         private void btn_addname_Click(object sender, EventArgs e)
         {
-            string fileLocation = @"C:\Users\guest_t0gyw3i\OneDrive\Documenten\Fontys\Pst7\OIS12\Week 14+\Hotelsysteem WFA\Hotelsysteem WFA\db.txt";
+            //string fileLocation = @"C:\Users\guest_t0gyw3i\OneDrive\Documenten\Fontys\Pst7\OIS12\Week 14+\Hotelsysteem WFA\Hotelsysteem WFA\db.txt";
+            string fileLocation = @"C:\Users\guest_4bce0kr\Documents\GitHub\Hotelsysteem-WFA\Hotelsysteem WFA\db.txt";
             string[] opened = File.ReadAllLines(fileLocation);
             if (opened.Length != 0)
             {

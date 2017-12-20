@@ -17,7 +17,8 @@ namespace Hotelsysteem_WFA
     {
         DateTime begin, end;
         int room;
-        string fileLocation = @"C:\Users\guest_t0gyw3i\OneDrive\Documenten\Fontys\Pst7\OIS12\Week 14+\Hotelsysteem WFA\Hotelsysteem WFA\db.txt";
+        //string fileLocation = @"C:\Users\guest_t0gyw3i\OneDrive\Documenten\Fontys\Pst7\OIS12\Week 14+\Hotelsysteem WFA\Hotelsysteem WFA\db.txt";
+        string fileLocation = @"C:\Users\guest_4bce0kr\Documents\GitHub\Hotelsysteem-WFA\Hotelsysteem WFA\db.txt";
 
         public ReservationForm()
         {
@@ -40,66 +41,75 @@ namespace Hotelsysteem_WFA
         private void btn_endDate_Click(object sender, EventArgs e)
         {
             end = mcal_selector.SelectionEnd;
-            btn_endDate.Text = mcal_selector.SelectionEnd.ToLongDateString();
+            if (begin < end)
+            {
+                btn_endDate.Text = mcal_selector.SelectionEnd.ToLongDateString();
+            }
+            else
+            {
+                MessageBox.Show("You can't have an end date before a begin date!");
+            }
         }
 
         private void btn_save_Click(object sender, EventArgs e)
         {
             int id = 0;
-            
-            string[] toOpen = { };
-            try //Opening the file to check whether IDs are available
+            if (CheckForItems()) //Checks whether all the information has been entered.
             {
-                toOpen = File.ReadAllLines(fileLocation);
-                bool selected = false;
-                if (toOpen.Length > 0)
+                string[] toOpen = { };
+                try //Opening the file to check whether IDs are available
                 {
-                    for (int i = 0; i < toOpen.Length; i++)
+                    toOpen = File.ReadAllLines(fileLocation);
+                    bool selected = false;
+                    if (toOpen.Length > 0)
                     {
-                        string currentString = toOpen[i];
-                        int idCheck = Convert.ToInt32(currentString.Substring(3, currentString.IndexOf(';') - 3));
-                        if (idCheck != i)
+                        for (int i = 0; i < toOpen.Length; i++)
                         {
-                            id = i;
-                            selected = true;
-                            break;
+                            string currentString = toOpen[i];
+                            int idCheck = Convert.ToInt32(currentString.Substring(3, currentString.IndexOf(';') - 3));
+                            if (idCheck != i)
+                            {
+                                id = i;
+                                selected = true;
+                                break;
+                            }
                         }
                     }
+                    if (!selected) //If no ID is available, add the reservation at the end.
+                    {
+                        id = toOpen.Length;
+                    }
                 }
-                if (!selected) //If no ID is available, add the reservation at the end.
+                catch (Exception ex)
                 {
-                    id = toOpen.Length;
+                    MessageBox.Show(ex.ToString());
                 }
+                try //Save to the textfile.
+                {
+                    int room = lb_rooms.SelectedIndex + 1;
+                    string lineToSave = $"ID:{id};B:{begin.ToLongDateString()};E:{end.ToLongDateString()};R:{room};";
+                    List<string> toSave = new List<string>();
+                    toSave = toOpen.ToList<string>();
+                    toSave.Add(lineToSave);
+                    File.WriteAllLines(fileLocation, toSave);
+                }
+                catch
+                {
+                    MessageBox.Show("Couldn't save the database!");
+                }
+                try //Sort the text file by ID.
+                {
+                    toOpen = File.ReadAllLines(fileLocation);
+                    List<string> toSave = toOpen.ToList();
+                    toOpen.OrderBy(x => PadNumbers(x));
+                    File.WriteAllLines(fileLocation, toOpen);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+                this.Close();
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-            try //Save to the textfile.
-            {
-                int room = lb_rooms.SelectedIndex;
-                string lineToSave = $"ID:{id};B:{begin.ToLongDateString()};E:{end.ToLongDateString()};R:{room};";
-                List<string> toSave = new List<string>();
-                toSave = toOpen.ToList<string>();
-                toSave.Add(lineToSave);
-                File.WriteAllLines(fileLocation, toSave);
-            }
-            catch
-            {
-                MessageBox.Show("Couldn't save the database!");
-            }
-            try //Sort the text file by ID.
-            {
-                toOpen = File.ReadAllLines(fileLocation);
-                List<string> toSave = toOpen.ToList();
-                toOpen.OrderBy(x => PadNumbers(x));
-                File.WriteAllLines(fileLocation, toOpen);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-            this.Close();
         }
 
         private static string PadNumbers(string input) //Sorts numbers alphanumerically using ID
@@ -149,6 +159,33 @@ namespace Hotelsysteem_WFA
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private bool CheckForItems()
+        {
+            if (begin >= DateTime.Today && end >= DateTime.Today && lb_rooms.SelectedIndex != -1)
+            {
+                return true;
+            }
+            else if (begin < DateTime.Today)
+            {
+                MessageBox.Show("You have to select a begin date!");
+                return false;
+            }
+            else if (end < DateTime.Today)
+            {
+                MessageBox.Show("You have to select an end date!");
+                return false;
+            }
+            else if (lb_rooms.SelectedIndex == -1)
+            {
+                MessageBox.Show("You hafvge to select a room!");
+                return false;
+            }
+            else
+            {
+                return false;
             }
         }
     }
