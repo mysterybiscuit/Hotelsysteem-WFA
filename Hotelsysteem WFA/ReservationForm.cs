@@ -17,8 +17,10 @@ namespace Hotelsysteem_WFA
     {
         DateTime begin, end;
         int room;
-        //string fileLocation = @"C:\Users\guest_t0gyw3i\OneDrive\Documenten\Fontys\Pst7\OIS12\Week 14+\Hotelsysteem WFA\Hotelsysteem WFA\db.txt";
-        string fileLocation = @"C:\Users\guest_4bce0kr\Documents\GitHub\Hotelsysteem-WFA\Hotelsysteem WFA\db.txt";
+        string fileLocation = @"C:\Users\guest_t0gyw3i\OneDrive\Documenten\Fontys\Pst7\OIS12\Week 14+\Hotelsysteem WFA\Hotelsysteem WFA\db.txt";
+        //string fileLocation = @"C:\Users\guest_4bce0kr\Documents\GitHub\Hotelsysteem-WFA\Hotelsysteem WFA\db.txt";
+
+        int roomAmount = 213;
 
         public ReservationForm()
         {
@@ -120,7 +122,7 @@ namespace Hotelsysteem_WFA
         private void checkForRooms()
         {
             List<string> availableRooms = new List<string>();
-            for (int i = 1; i <= 213; i++) //Make a list of all the rooms
+            for (int i = 1; i <= roomAmount; i++) //Make a list of all the rooms
             {
                 string room = i.ToString();
                 availableRooms.Add(room);
@@ -130,12 +132,21 @@ namespace Hotelsysteem_WFA
                 string[] toOpen = File.ReadAllLines(fileLocation);
                 foreach (string line in toOpen) //Remove occupied rooms
                 {
-                    string room = line.Substring(line.IndexOf('R'));
-                    for (int i = 1; i <= 213; i++)
+                    string room = line.Substring(line.IndexOf('R') + 2);
+                    room = room.Remove(room.Length - 1, 1);
+                    for (int i = 1; i <= roomAmount; i++)
                     {
+                        if (i.ToString().Length == 1 && i.ToString() == $"00{room}")
+                        {
+                            availableRooms.RemoveAt(availableRooms.IndexOf(i.ToString()));
+                        }
+                        else if (i.ToString().Length == 2 && i.ToString() == $"0{room}")
+                        {
+                            availableRooms.RemoveAt(availableRooms.IndexOf(i.ToString()));
+                        }
                         if (i.ToString() == room)
                         {
-                           availableRooms.RemoveAt(availableRooms.IndexOf(i.ToString()));
+                            availableRooms.RemoveAt(availableRooms.IndexOf(i.ToString()));
                         }
                     }
                 }
@@ -180,7 +191,7 @@ namespace Hotelsysteem_WFA
             }
             else if (lb_rooms.SelectedIndex == -1)
             {
-                MessageBox.Show("You hafvge to select a room!");
+                MessageBox.Show("You have to select a room!");
                 return false;
             }
             else

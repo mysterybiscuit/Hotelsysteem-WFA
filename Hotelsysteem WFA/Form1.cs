@@ -42,8 +42,8 @@ namespace Hotelsysteem_WFA
         void LoadDatabase()
         {
             lb_reservations.Items.Clear();
-            //string fileLocation = @"C:\Users\guest_t0gyw3i\OneDrive\Documenten\Fontys\Pst7\OIS12\Week 14+\Hotelsysteem WFA\Hotelsysteem WFA\db.txt";
-            string fileLocation = @"C:\Users\guest_4bce0kr\Documents\GitHub\Hotelsysteem-WFA\Hotelsysteem WFA\db.txt";
+            string fileLocation = @"C:\Users\guest_t0gyw3i\OneDrive\Documenten\Fontys\Pst7\OIS12\Week 14+\Hotelsysteem WFA\Hotelsysteem WFA\db.txt";
+            //string fileLocation = @"C:\Users\guest_4bce0kr\Documents\GitHub\Hotelsysteem-WFA\Hotelsysteem WFA\db.txt";
             string[] reservations = File.ReadAllLines(fileLocation);
             ids = new int[reservations.Length];
             beginDates = new string[reservations.Length];
@@ -105,8 +105,8 @@ namespace Hotelsysteem_WFA
 
         private void btn_remove_Click(object sender, EventArgs e)
         {
-            //string fileLocation = @"C:\Users\guest_t0gyw3i\OneDrive\Documenten\Fontys\Pst7\OIS12\Week 14+\Hotelsysteem WFA\Hotelsysteem WFA\db.txt";
-            string fileLocation = @"C:\Users\guest_4bce0kr\Documents\GitHub\Hotelsysteem-WFA\Hotelsysteem WFA\db.txt";
+            string fileLocation = @"C:\Users\guest_t0gyw3i\OneDrive\Documenten\Fontys\Pst7\OIS12\Week 14+\Hotelsysteem WFA\Hotelsysteem WFA\db.txt";
+            //string fileLocation = @"C:\Users\guest_4bce0kr\Documents\GitHub\Hotelsysteem-WFA\Hotelsysteem WFA\db.txt";
             string[] reservations = File.ReadAllLines(fileLocation);
             List<string> tempReserv = reservations.ToList();
             int IndexSelected = lb_reservations.SelectedIndex;
