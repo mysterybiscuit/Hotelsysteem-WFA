@@ -32,6 +32,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.lb_reservations = new System.Windows.Forms.ListBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btn_remove = new System.Windows.Forms.Button();
+            this.btn_addname = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
             this.tb_enddate = new System.Windows.Forms.TextBox();
@@ -42,9 +45,7 @@
             this.tb_roomnumber = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.btn_reload = new System.Windows.Forms.Button();
-            this.btn_addname = new System.Windows.Forms.Button();
-            this.btn_remove = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btn_removename = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -80,6 +81,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btn_removename);
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.btn_remove);
             this.groupBox1.Controls.Add(this.btn_addname);
@@ -92,6 +94,35 @@
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Reservation information";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(257, 244);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(115, 26);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "Add to food";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // btn_remove
+            // 
+            this.btn_remove.Location = new System.Drawing.Point(136, 297);
+            this.btn_remove.Name = "btn_remove";
+            this.btn_remove.Size = new System.Drawing.Size(115, 26);
+            this.btn_remove.TabIndex = 7;
+            this.btn_remove.Text = "Remove reservation";
+            this.btn_remove.UseVisualStyleBackColor = true;
+            this.btn_remove.Click += new System.EventHandler(this.btn_remove_Click);
+            // 
+            // btn_addname
+            // 
+            this.btn_addname.Location = new System.Drawing.Point(136, 244);
+            this.btn_addname.Name = "btn_addname";
+            this.btn_addname.Size = new System.Drawing.Size(115, 26);
+            this.btn_addname.TabIndex = 6;
+            this.btn_addname.Text = "Add name";
+            this.btn_addname.UseVisualStyleBackColor = true;
+            this.btn_addname.Click += new System.EventHandler(this.btn_addname_Click);
             // 
             // groupBox2
             // 
@@ -121,6 +152,7 @@
             // 
             // tb_enddate
             // 
+            this.tb_enddate.Enabled = false;
             this.tb_enddate.Location = new System.Drawing.Point(7, 186);
             this.tb_enddate.Name = "tb_enddate";
             this.tb_enddate.Size = new System.Drawing.Size(198, 20);
@@ -137,6 +169,7 @@
             // 
             // tb_begindate
             // 
+            this.tb_begindate.Enabled = false;
             this.tb_begindate.Location = new System.Drawing.Point(7, 147);
             this.tb_begindate.Name = "tb_begindate";
             this.tb_begindate.Size = new System.Drawing.Size(198, 20);
@@ -149,6 +182,7 @@
             this.lb_names.Name = "lb_names";
             this.lb_names.Size = new System.Drawing.Size(200, 56);
             this.lb_names.TabIndex = 7;
+            this.lb_names.SelectedIndexChanged += new System.EventHandler(this.lb_names_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -161,6 +195,7 @@
             // 
             // tb_roomnumber
             // 
+            this.tb_roomnumber.Enabled = false;
             this.tb_roomnumber.Location = new System.Drawing.Point(9, 32);
             this.tb_roomnumber.Name = "tb_roomnumber";
             this.tb_roomnumber.Size = new System.Drawing.Size(198, 20);
@@ -185,34 +220,14 @@
             this.btn_reload.UseVisualStyleBackColor = true;
             this.btn_reload.Click += new System.EventHandler(this.btn_reload_Click);
             // 
-            // btn_addname
+            // btn_removename
             // 
-            this.btn_addname.Location = new System.Drawing.Point(136, 244);
-            this.btn_addname.Name = "btn_addname";
-            this.btn_addname.Size = new System.Drawing.Size(115, 26);
-            this.btn_addname.TabIndex = 6;
-            this.btn_addname.Text = "Add name";
-            this.btn_addname.UseVisualStyleBackColor = true;
-            this.btn_addname.Click += new System.EventHandler(this.btn_addname_Click);
-            // 
-            // btn_remove
-            // 
-            this.btn_remove.Location = new System.Drawing.Point(136, 297);
-            this.btn_remove.Name = "btn_remove";
-            this.btn_remove.Size = new System.Drawing.Size(115, 26);
-            this.btn_remove.TabIndex = 7;
-            this.btn_remove.Text = "Remove reservation";
-            this.btn_remove.UseVisualStyleBackColor = true;
-            this.btn_remove.Click += new System.EventHandler(this.btn_remove_Click);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(257, 244);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(115, 26);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Add to Food";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btn_removename.Location = new System.Drawing.Point(257, 297);
+            this.btn_removename.Name = "btn_removename";
+            this.btn_removename.Size = new System.Drawing.Size(115, 26);
+            this.btn_removename.TabIndex = 9;
+            this.btn_removename.Text = "Remove name";
+            this.btn_removename.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -253,6 +268,7 @@
         private System.Windows.Forms.Button btn_addname;
         private System.Windows.Forms.Button btn_remove;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btn_removename;
     }
 }
 

@@ -28,17 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tb_name = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btn_addname = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // textBox1
+            // tb_name
             // 
-            this.textBox1.Location = new System.Drawing.Point(75, 12);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(240, 20);
-            this.textBox1.TabIndex = 0;
+            this.tb_name.Location = new System.Drawing.Point(75, 12);
+            this.tb_name.Name = "tb_name";
+            this.tb_name.Size = new System.Drawing.Size(240, 20);
+            this.tb_name.TabIndex = 0;
             // 
             // label1
             // 
@@ -66,7 +66,7 @@
             this.ClientSize = new System.Drawing.Size(327, 73);
             this.Controls.Add(this.btn_addname);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.tb_name);
             this.Name = "AddNames";
             this.Text = "Add Name";
             this.ResumeLayout(false);
@@ -76,7 +76,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tb_name;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btn_addname;
     }

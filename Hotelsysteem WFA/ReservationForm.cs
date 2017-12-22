@@ -17,8 +17,8 @@ namespace Hotelsysteem_WFA
     {
         DateTime begin, end;
         int room;
-        string fileLocation = @"C:\Users\guest_t0gyw3i\OneDrive\Documenten\Fontys\Pst7\OIS12\Week 14+\Hotelsysteem WFA\Hotelsysteem WFA\db.txt";
-        //string fileLocation = @"C:\Users\guest_4bce0kr\Documents\GitHub\Hotelsysteem-WFA\Hotelsysteem WFA\db.txt";
+        //string fileLocation = @"C:\Users\guest_t0gyw3i\OneDrive\Documenten\Fontys\Pst7\OIS12\Week 14+\Hotelsysteem WFA\Hotelsysteem WFA\db.txt";
+        string fileLocation = @"C:\Users\guest_4bce0kr\Documents\GitHub\Hotelsysteem-WFA\Hotelsysteem WFA\db.txt";
 
         int roomAmount = 213;
 
@@ -89,7 +89,7 @@ namespace Hotelsysteem_WFA
                 try //Save to the textfile.
                 {
                     int room = lb_rooms.SelectedIndex + 1;
-                    string lineToSave = $"ID:{id};B:{begin.ToLongDateString()};E:{end.ToLongDateString()};R:{room};";
+                    string lineToSave = $"ID:{id};B:{begin.ToLongDateString()};E:{end.ToLongDateString()};R:{room};A:{tb_address.Text};RE:{tb_residence.Text};P1:{tb_fullname.Text};";
                     List<string> toSave = new List<string>();
                     toSave = toOpen.ToList<string>();
                     toSave.Add(lineToSave);
@@ -175,7 +175,7 @@ namespace Hotelsysteem_WFA
 
         private bool CheckForItems()
         {
-            if (begin >= DateTime.Today && end >= DateTime.Today && lb_rooms.SelectedIndex != -1)
+            if (begin >= DateTime.Today && end >= DateTime.Today && lb_rooms.SelectedIndex != -1 && tb_fullname.Text != "" && tb_address.Text != "" && tb_residence.Text != "")
             {
                 return true;
             }
@@ -192,6 +192,21 @@ namespace Hotelsysteem_WFA
             else if (lb_rooms.SelectedIndex == -1)
             {
                 MessageBox.Show("You have to select a room!");
+                return false;
+            }
+            else if (tb_fullname.Text == "")
+            {
+                MessageBox.Show("You have to enter a full name!");
+                return false;
+            }
+            else if (tb_address.Text == "")
+            {
+                MessageBox.Show("You have to enter an address!");
+                return false;
+            }
+            else if (tb_residence.Text == "")
+            {
+                MessageBox.Show("You have to enter a residence!");
                 return false;
             }
             else

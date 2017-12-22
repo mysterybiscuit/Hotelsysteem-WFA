@@ -28,10 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.rb_other = new System.Windows.Forms.RadioButton();
-            this.rb_female = new System.Windows.Forms.RadioButton();
-            this.rb_male = new System.Windows.Forms.RadioButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -46,73 +42,21 @@
             this.btn_save = new System.Windows.Forms.Button();
             this.lb_rooms = new System.Windows.Forms.ListBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.rb_other);
-            this.groupBox1.Controls.Add(this.rb_female);
-            this.groupBox1.Controls.Add(this.rb_male);
-            this.groupBox1.Location = new System.Drawing.Point(4, 176);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Size = new System.Drawing.Size(70, 87);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Gender";
-            // 
-            // rb_other
-            // 
-            this.rb_other.AutoSize = true;
-            this.rb_other.Location = new System.Drawing.Point(5, 62);
-            this.rb_other.Margin = new System.Windows.Forms.Padding(2);
-            this.rb_other.Name = "rb_other";
-            this.rb_other.Size = new System.Drawing.Size(51, 17);
-            this.rb_other.TabIndex = 2;
-            this.rb_other.TabStop = true;
-            this.rb_other.Text = "Other";
-            this.rb_other.UseVisualStyleBackColor = true;
-            // 
-            // rb_female
-            // 
-            this.rb_female.AutoSize = true;
-            this.rb_female.Location = new System.Drawing.Point(5, 40);
-            this.rb_female.Margin = new System.Windows.Forms.Padding(2);
-            this.rb_female.Name = "rb_female";
-            this.rb_female.Size = new System.Drawing.Size(59, 17);
-            this.rb_female.TabIndex = 1;
-            this.rb_female.TabStop = true;
-            this.rb_female.Text = "Female";
-            this.rb_female.UseVisualStyleBackColor = true;
-            // 
-            // rb_male
-            // 
-            this.rb_male.AutoSize = true;
-            this.rb_male.Location = new System.Drawing.Point(5, 18);
-            this.rb_male.Margin = new System.Windows.Forms.Padding(2);
-            this.rb_male.Name = "rb_male";
-            this.rb_male.Size = new System.Drawing.Size(48, 17);
-            this.rb_male.TabIndex = 0;
-            this.rb_male.TabStop = true;
-            this.rb_male.Text = "Male";
-            this.rb_male.UseVisualStyleBackColor = true;
-            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.groupBox3);
-            this.groupBox2.Controls.Add(this.groupBox1);
             this.groupBox2.Location = new System.Drawing.Point(9, 10);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox2.Size = new System.Drawing.Size(149, 268);
+            this.groupBox2.Size = new System.Drawing.Size(149, 266);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Informatie";
+            this.groupBox2.Text = "Information";
             // 
             // groupBox3
             // 
@@ -257,8 +201,6 @@
             this.Name = "ReservationForm";
             this.Text = "Reservering";
             this.Load += new System.EventHandler(this.ReservationForm_Load);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
@@ -268,11 +210,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.RadioButton rb_other;
-        private System.Windows.Forms.RadioButton rb_female;
-        private System.Windows.Forms.RadioButton rb_male;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label3;
